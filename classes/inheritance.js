@@ -26,9 +26,17 @@ class ReputablePerson extends Person {
 	toString() {
 		super.toString();
 		console.log('toString');
-		return "this";
 	}
 }
 
 const rP = new ReputablePerson('kwon', 'kidae', 5);
-console.log(rP.toString());
+// console.log(rP.toString());
+
+const printPrototypeHierachy = function(instance) {
+	if (instance != null) {
+		console.log(instance);
+		printPrototypeHierachy(Reflect.getPrototypeOf(instance));
+	}
+};
+
+printPrototypeHierachy(rP);
