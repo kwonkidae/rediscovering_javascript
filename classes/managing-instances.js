@@ -14,9 +14,13 @@ class Names {
 
   filter3(selector) {
     const constructor =
-      Reflect.getPrototypeOf(this).constructor.kindHint ||
+      Reflect.getPrototypeOf(this).constructor[Symbol.species] ||
       Reflect.getPrototypeOf(this).constructor;
     return new constructor(...this.names.filter(selector));
+  }
+
+  static get [Symbol.species]() {
+    return Names;
   }
 }
 
