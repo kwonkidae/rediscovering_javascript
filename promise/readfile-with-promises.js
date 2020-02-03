@@ -24,7 +24,6 @@ countLinesWithText('invalid');
 
 class App {
   constructor() {
-    console.log(this);
     this.a = 5;
   }
 
@@ -33,9 +32,15 @@ class App {
   }
 
   render() {
-    return this.data.bind(this);
+    return this.data;
   }
 }
 
 var a = new App();
-console.log(a.render()());
+
+let b = {
+  a: 5,
+};
+
+b.data = a.render();
+b.data();
